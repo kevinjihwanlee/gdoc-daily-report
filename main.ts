@@ -2,24 +2,23 @@ const Constants = {
     baseFolder: "daily_reports"
 }
 
-// interface Document {
-//     id: string
-//     content: string
-// }
-
-function getPreviousReport() {
-    let previousReport
+function createNewReport() {
+    let previousReportId = []
     const baseFolders = DriveApp.getFoldersByName(Constants.baseFolder)
     while (baseFolders.hasNext()) { 
-        const files = baseFolders.next().getFiles()
+        const folder = baseFolders.next()
+        const files = folder.getFiles()
         while (files.hasNext()) {
-            previousReport = files.next().getId()
+            previousReportId.push(files.next().getId())
         }
+        let today = new Date()
+        const dd = today.getDate()
+        const mm = ('0' + (today.getMonth() + 1)).slice(-2)
+        let newReportTitle = mm + "/" + dd + " Daily Report"
+        DriveApp.getFileById(previousReportId[0]).makeCopy(newReportTitle, folder)
     }
-    return previousReport
 }
 
 function main() {
-    let previousReportId = getPreviousReport()
-    Logger.log(DocumentApp.openById(previousReportId).getBody())
+    createNewReport()
 }
