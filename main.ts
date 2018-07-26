@@ -6,11 +6,7 @@ const Constants = {
 function createDailyTrigger() {
     ScriptApp.newTrigger('createNewReport')
         .timeBased()
-        .onWeekDay(ScriptApp.WeekDay.MONDAY)
-        .onWeekDay(ScriptApp.WeekDay.TUESDAY)
-        .onWeekDay(ScriptApp.WeekDay.WEDNESDAY)
-        .onWeekDay(ScriptApp.WeekDay.THURSDAY)
-        .onWeekDay(ScriptApp.WeekDay.FRIDAY)
+        .everyDays(1)
         .atHour(8)
         .create()
 }
