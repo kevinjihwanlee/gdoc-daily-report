@@ -4,7 +4,7 @@ const Constants = {
 }
 
 function createDailyTrigger() {
-    ScriptApp.newTrigger('createNewReport')
+    ScriptApp.newTrigger('main')
         .timeBased()
         .everyDays(1)
         .atHour(8)
@@ -34,5 +34,8 @@ function createNewReport() {
 }
 
 function main() {
+  const today = new Date().getDay()
+  if (!(today === 0 || today === 6)) {
     createNewReport()
+  }
 }
