@@ -11,7 +11,4 @@ but can easily be adapted to fit other uses as well.
 * Creates reports conditionally based on the day of the week (currently does not make reports for Saturday/Sundays, non-workdays)
 
 ## To-do
-* Figure out how to import/export to clean up code (put constants in a different file)
-* Actually use types to take advantage of TypeScript
 * Edit the text within the document to adjust based on the date as well
-* Prepend 0s to single digit days
