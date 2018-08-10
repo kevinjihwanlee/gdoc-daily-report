@@ -25,7 +25,7 @@ function createNewReport() {
         const report = DriveApp.getFileById(previousReportId[0])
         old.addFile(report)
         let today = new Date()
-        const dd = ('0' + String(today.getDate()).slice(-2))
+        const dd = ('0' + String(today.getDate())).slice(-2)
         const mm = ('0' + (today.getMonth() + 1)).slice(-2)
         let newReportTitle = mm + "/" + dd + " Daily Report"
         report.makeCopy(newReportTitle, folder)
